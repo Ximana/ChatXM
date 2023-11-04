@@ -1,0 +1,52 @@
+Claro, aqui está uma estrutura de banco de dados um pouco mais avançada para um sistema de chat online:
+
+1. **Tabela de Usuários:**
+   - ID do usuário (chave primária)
+   - Nome de usuário (único)
+   - Nome completo
+   - Senha (criptografada)
+   - Endereço de e-mail
+   - Data de registro
+   - Último acesso
+   - Informações de perfil (como foto, status, biografia)
+   - Preferências de notificação
+   - Amigos ou contatos (para facilitar a busca e conexão)
+
+2. **Tabela de Conversas:**
+   - ID da conversa (chave primária)
+   - Nome da conversa (opcional)
+   - Tipo de conversa (grupo, individual, etc.)
+   - Lista de participantes (como IDs de usuários)
+   - Última mensagem enviada (ID da mensagem)
+   - Data e hora da última atividade
+
+3. **Tabela de Mensagens:**
+   - ID da mensagem (chave primária)
+   - ID da conversa relacionada
+   - ID do remetente
+   - Conteúdo da mensagem (texto, imagem, vídeo, link, etc.)
+   - Timestamp (data e hora de envio)
+   - Status da mensagem (enviada, entregue, lida, excluída)
+   - Marcadores (para classificação, como mensagens não lidas)
+
+4. **Tabela de Mensagens Lidas:**
+   - ID da mensagem
+   - ID do destinatário
+   - Timestamp de leitura
+
+5. **Tabela de Grupos:**
+   - ID do grupo
+   - Nome do grupo
+   - Descrição do grupo
+   - ID do criador do grupo
+   - Lista de membros
+   - Configurações do grupo (como visibilidade, restrições, etc.)
+
+6. **Tabela de Bloqueios e Denúncias:**
+   - ID do registro
+   - ID do usuário que bloqueou
+   - ID do usuário bloqueado
+   - Motivo do bloqueio ou denúncia
+   - Status da denúncia (pendente, resolvida, etc.)
+
+Esta estrutura permite uma funcionalidade mais avançada, incluindo grupos, notificações, gerenciamento de perfil e recursos de segurança, como bloqueio e denúncias. Lembre-se de projetar índices e consultas eficientes, além de implementar medidas de segurança robustas para proteger os dados dos usuários.

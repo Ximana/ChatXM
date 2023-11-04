@@ -1,0 +1,57 @@
+class ConexaoMySQL {
+    private $host;
+    private $usuario;
+    private $senha;
+    private $banco;
+    private $conexao;
+
+    public function __construct($host, $usuario, $senha, $banco) {
+        $this->host = $host;
+        $this->usuario = $usuario;
+        $this->senha = $senha;
+        $this->banco = $banco;
+    }
+
+    public function conectar() {
+        $this->conexao = new mysqli($this->host, $this->usuario, $this->senha, $this->banco);
+
+        if ($this->conexao->connect_error) {
+            die("Erro na conexão com o MySQL: " . $this->conexao->connect_error);
+        }
+    }
+
+    public function desconectar() {
+        if ($this->conexao) {
+            $this->conexao->close();
+        }
+    }
+
+    public function executarConsulta($sql) {
+        $result = $this->conexao->query($sql);
+        return $result;
+    }
+}
+
+// Exemplo de uso da classe para conectar e executar uma consulta
+$host = "localhost";
+$usuario = "seu_usuario";
+$senha = "sua_senha";
+$banco = "seu_banco";
+
+$conexao = new ConexaoMySQL($host, $usuario, $senha, $banco);
+$conexao->conectar();
+
+// Exemplo de consulta
+$sql = "SELECT * FROM sua_tabela";
+$resultado = $conexao->executarConsulta($sql);
+
+if ($resultado->num_rows > 0) {
+    while ($row = $resultado->fetch_assoc()) {
+        // Processar os resultados aqui
+        echo "ID: " . $row["id"] . " Nome: " . $row["nome"] . "<br>";
+    }
+} else {
+    echo "Nenhum resultado encontrado.";
+}
+
+$conexao->desconectar();

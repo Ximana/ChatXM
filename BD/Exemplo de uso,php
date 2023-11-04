@@ -1,0 +1,110 @@
+Exemplo de uso do método adicionar:
+
+php
+Copy code
+$db = new MinhaClasseDeBancoDeDados('localhost', 'seu_usuario', 'sua_senha', 'seu_banco');
+
+// Dados que deseja adicionar
+$dados = array(
+    'nome' => 'João',
+    'email' => 'joao@example.com',
+    'idade' => 30
+);
+
+// Tabela à qual deseja adicionar os dados
+$tabela = 'sua_tabela';
+
+if ($db->adicionar($tabela, $dados)) {
+    echo "Dados adicionados com sucesso!";
+} else {
+    echo "Erro ao adicionar dados: " . $db->conexao->error;
+}
+
+
+
+Exemplo de uso do método atualizar:
+
+php
+Copy code
+// Dados que deseja atualizar
+$dados = array(
+    'idade' => 31
+);
+
+// Condição para a atualização
+$condicao = "nome = 'João'";
+
+if ($db->atualizar($tabela, $dados, $condicao)) {
+    echo "Dados atualizados com sucesso!";
+} else {
+    echo "Erro ao atualizar dados: " . $db->conexao->error;
+}
+
+
+
+
+
+
+
+Exemplo de uso do método remover:
+
+php
+Copy code
+// Condição para a remoção
+$condicao = "nome = 'João'";
+
+if ($db->remover($tabela, $condicao)) {
+    echo "Dados removidos com sucesso!";
+} else {
+    echo "Erro ao remover dados: " . $db->conexao->error;
+}
+
+
+
+
+
+
+
+
+
+Exemplo de uso do método selecionar:
+
+php
+Copy code
+// Colunas que deseja selecionar
+$colunas = array('nome', 'email');
+
+// Condição opcional
+$condicao = "idade > 25";
+
+$resultado = $db->selecionar($tabela, $colunas, $condicao);
+
+if (!empty($resultado)) {
+    foreach ($resultado as $row) {
+        echo "Nome: " . $row['nome'] . " - Email: " . $row['email'] . "<br>";
+    }
+} else {
+    echo "Nenhum resultado encontrado.";
+}
+
+
+
+
+
+
+
+
+
+
+Exemplo de uso do método login:
+
+php
+Copy code
+$usuario = 'joao';
+$senha = 'senha_secreta'; // Lembre-se de usar hash ou criptografia adequada
+
+if ($db->login($tabela, $usuario, $senha)) {
+    echo "Login bem-sucedido!";
+} else {
+    echo "Credenciais inválidas.";
+}
