@@ -55,12 +55,12 @@ if (!empty($nome) && !empty($apelido) && !empty($email) && !empty($senha)) {
                     //Inserir a imagem carregada na pasta de usuarios
                     $new_img_name = $time . $img_nome;
                     if (move_uploaded_file($tmp_nome, "imagensUsuario/" . $new_img_name)) {
-                        $status = "Ativo";
+                       // $status = "Ativo";
                         $random_id = rand(time(), 10000000); // id aleatorio para o usuario
                         //Inserir os dados do usuario na BD
                         $query = "INSERT INTO usuario
-                            (id_usuario, id_unico, nome, apelido, data_nascimento, genero, email, senha, estado, imagem, data_registro, numero_telefone)
-                            VALUES (default, " . $random_id . ", '" . $nome . "', '" . $apelido . "', '" . $nascimento . "', '" . $genero . "', '" . $email . "', '" . $senha . "', '" . $status . "', '" . $new_img_name . "', default, '" . $telefone . "')";
+                            (id_usuario, id_unico, nome, apelido, data_nascimento, genero, email, senha, estado, imagem, data_registro, numero_telefone, Ultima_atividade)
+                            VALUES (default, " . $random_id . ", '" . $nome . "', '" . $apelido . "', '" . $nascimento . "', '" . $genero . "', '" . $email . "', '" . $senha . "',  default , '" . $new_img_name . "', default, '" . $telefone . "', default)";
                         echo "<br><br> Query: <br>" . $query;
                         $sql2 = mysqli_query($conexao, $query);
 
@@ -71,7 +71,7 @@ if (!empty($nome) && !empty($apelido) && !empty($email) && !empty($senha)) {
                             if (mysqli_num_rows($sql3) > 0) {
                                 $row = mysqli_fetch_assoc($sql3);
 
-                                $_SESSION['id_unico'] = $row['id_unico']; // para usar o id unico do utilizador em outros arquivos php
+                               // $_SESSION['id_unico'] = $row['id_unico']; // para usar o id unico do utilizador em outros arquivos php
                                 // $_SESSION['nomeUsuario'] = $row['unique_Id']
                                 // $_SESSION['idUsuario'] = $row['unique_Id']
                                 // $_SESSION['apelido'] = $row['unique_Id']
@@ -88,16 +88,16 @@ if (!empty($nome) && !empty($apelido) && !empty($email) && !empty($senha)) {
                             }
                         } else {
                             echo "Algo correu mal";
-                            header("Location: ../criarContaForm.php");
+                           // header("Location: ../criarContaForm.php");
                         }
                     }
                 } else {
                     echo "Selecione uma imagem com extensao valida - png, jpg, jpeg";
-                    header("Location: ../criarContaForm.php");
+                    //header("Location: ../criarContaForm.php");
                 }
             } else {
                 echo "Por favor seleione uma imagem";
-                header("Location: ../criarContaForm.php");
+               // header("Location: ../criarContaForm.php");
             }
         }
     } else {

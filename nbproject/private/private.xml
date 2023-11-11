@@ -5,7 +5,12 @@
         <group>
             <file>file:/opt/lampp/htdocs/chat/usuariosLogados.php</file>
             <file>file:/opt/lampp/htdocs/chat/index.php</file>
+            <file>file:/opt/lampp/htdocs/chat/mensagens.php</file>
             <file>file:/opt/lampp/htdocs/chat/js/listar_usuarios.js</file>
+            <file>file:/opt/lampp/htdocs/chat/include/cadastroUsuario.php</file>
+            <file>file:/opt/lampp/htdocs/chat/include/enviarMensagem.php</file>
+            <file>file:/opt/lampp/htdocs/chat/pesquisar_usuarios.php</file>
+            <file>file:/opt/lampp/htdocs/chat/include/login.php</file>
         </group>
     </open-files>
 </project-private>

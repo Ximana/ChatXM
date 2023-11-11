@@ -72,14 +72,14 @@
             
             
             <!-- Lista de Pessoas Disponiveis -->
-            <div id="plist" class="people-list">
+            <div id="plist" class="lista-pessoas">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-search"></i></span>
                     </div>
                     <input type="text" class="form-control" placeholder="Search...">
                 </div>
-                <ul class="list-unstyled chat-list mt-2 mb-0">
+                <ul class="list-unstyled chat-lista mt-2 mb-0">
                     <li class="clearfix">
                         <img src="include/imagensUsuario/avatar1.png" alt="avatar">
                         <div class="about">
@@ -134,7 +134,7 @@
             
             <!-- Chat -->
             <div class="chat">
-                <div class="chat-header clearfix">
+                <div class="chat-cabecalho clearfix">
 
                     <div class="row">
                         <div class="col-lg-6">
@@ -156,30 +156,30 @@
                 </div>
 
 
-                <div class="chat-history">
+                <div class="chat-historico">
                     <ul class="m-b-0">
                         <li class="clearfix">
-                            <div class="message-data text-right">
-                                <span class="message-data-time">10:10 AM, Today</span>
+                            <div class="mensagem-dados text-right">
+                                <span class="mensagem-data-hora">10:10 AM, Today</span>
                                 <img src="include/imagensUsuario/avatar7.png" alt="avatar">
                             </div>
-                            <div class="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
+                            <div class="mensagem outra-messagem float-right"> Hi Aiden, how are you? How is the project coming along? </div>
                         </li>
                         <li class="clearfix">
-                            <div class="message-data">
-                                <span class="message-data-time">10:12 AM, Today</span>
+                            <div class="mensagem-dados">
+                                <span class="mensagem-data-hora">10:12 AM, Today</span>
                             </div>
-                            <div class="message minha-mensagem">Are we meeting today?</div>                                    
+                            <div class="mensagem minha-mensagem">Are we meeting today?</div>                                    
                         </li>                               
                         <li class="clearfix">
-                            <div class="message-data">
-                                <span class="message-data-time">10:15 AM, Today</span>
+                            <div class="mensagem-dados">
+                                <span class="mensagem-data-hora">10:15 AM, Today</span>
                             </div>
-                            <div class="message minha-mensagem">Project has been already finished and I have results to show you.</div>
+                            <div class="mensagem minha-mensagem">Project has been already finished and I have results to show you.</div>
                         </li>
                     </ul>
                 </div>
-                <div class="chat-message clearfix">
+                <div class="chat-mensagem clearfix">
                     <div class="input-group mb-0">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-send"></i></span>
