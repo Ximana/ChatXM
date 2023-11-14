@@ -1,3 +1,8 @@
+<?php
+include_once 'include/dados_do_usuario.php';
+
+
+?>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -41,13 +46,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Nome</label>
-                                    <input class="input-form" type="text" name="nome" required>
+                                    <input class="input-form" type="text" name="nome" value="<?php echo $row['nome']; ?>" required>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Apelido</label>
-                                    <input class="input-form" type="text" name="apelido" required>
+                                    <input class="input-form" type="text" name="apelido" value="<?php echo $row['apelido']; ?>" required>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +61,7 @@
                                 <div class="input-group">
                                     <label class="label">Data de Nascimento</label>
                                     <div class="input-group-icon">
-                                        <input class="input-form js-datepicker" type="text" name="nascimento">
+                                        <input class="input-form js-datepicker" type="text" name="nascimento" value="<?php echo $row['data_nascimento']; ?>" >
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
                                 </div>
@@ -81,13 +86,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Email</label>
-                                    <input class="input-form" type="email" name="email" required>
+                                    <input class="input-form" type="email" name="email" value="<?php echo $row['email']; ?>" required>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Telefone</label>
-                                    <input class="input-form" type="tel" name="telefone">
+                                    <input class="input-form" type="tel" name="telefone" value="<?php echo $row['numero_telefone']; ?>">
                                 </div>
                             </div>
                         </div>
@@ -97,7 +102,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Senha</label>
-                                    <input class="input-form" type="password" name="senha" required>
+                                    <input class="input-form" type="password" name="senha" >
                                 </div>
                             </div>
                             <div class="col-2">
@@ -114,9 +119,11 @@
                         <div class="p-t-15">
                             <button class=" btn-verde " type="submit">Continuar</button>
                         </div>
+                        <!--
                         <div>
                             Já tem uma conta? faça <a href="loginForm.php">login</a>
                         </div>
+                        -->
                     </form>
                     
                     

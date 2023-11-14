@@ -7,7 +7,7 @@ $nome = mysqli_real_escape_string($conexao, $_POST['nome']);
 $apelido = mysqli_real_escape_string($conexao, $_POST['apelido']);
 $nascimento = mysqli_real_escape_string($conexao, $_POST['nascimento']);
 $genero = mysqli_real_escape_string($conexao, $_POST['genero']);
-$email = mysqli_real_escape_string($conexao, $_POST['email']);
+$email_telemovel = mysqli_real_escape_string($conexao, $_POST['email']);
 $telefone = mysqli_real_escape_string($conexao, $_POST['telefone']);
 $senha = mysqli_real_escape_string($conexao, $_POST['senha']);
 //$imagem = mysqli_real_escape_string($conexao, $_POST['imagem']);
@@ -16,22 +16,22 @@ echo "<br>Nome: " . $nome;
 echo "<br>Apelido: " . $apelido;
 echo "<br>Nascimento: " . $nascimento;
 echo "<br>genero: " . $genero;
-echo "<br>Email: " . $email;
+echo "<br>Email: " . $email_telemovel;
 echo "<br>Telefone: " . $telefone;
 echo "<br>Senha: " . $senha;
 echo "<br>Imagem: " . $_FILES['imagem']['name'];
 echo "<br><br><br>";
 
-if (!empty($nome) && !empty($apelido) && !empty($email) && !empty($senha)) {
+if (!empty($nome) && !empty($apelido) && !empty($email_telemovel) && !empty($senha)) {
 
     //Verificar se o email do usuario e valido
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) { //se o email for valido
+    if (filter_var($email_telemovel, FILTER_VALIDATE_EMAIL)) { //se o email for valido
         // 
         //Verificar se o email ja existe na base de dados
-        $sql = mysqli_query($conexao, "SELECT email FROM usuario WHERE email = '{$email}'");
+        $sql = mysqli_query($conexao, "SELECT email FROM usuario WHERE email = '{$email_telemovel}'");
 
         if (mysqli_num_rows($sql) > 0) { // se o email ja existe
-            echo "$email - este email ja existe na bd";
+            echo "$email_telemovel - este email ja existe na bd";
         } else {
 
             echo "O email nao existe na bd, pronto para inserir";
@@ -60,13 +60,13 @@ if (!empty($nome) && !empty($apelido) && !empty($email) && !empty($senha)) {
                         //Inserir os dados do usuario na BD
                         $query = "INSERT INTO usuario
                             (id_usuario, id_unico, nome, apelido, data_nascimento, genero, email, senha, estado, imagem, data_registro, numero_telefone, Ultima_atividade)
-                            VALUES (default, " . $random_id . ", '" . $nome . "', '" . $apelido . "', '" . $nascimento . "', '" . $genero . "', '" . $email . "', '" . $senha . "',  default , '" . $new_img_name . "', default, '" . $telefone . "', default)";
+                            VALUES (default, " . $random_id . ", '" . $nome . "', '" . $apelido . "', '" . $nascimento . "', '" . $genero . "', '" . $email_telemovel . "', '" . $senha . "',  default , '" . $new_img_name . "', default, '" . $telefone . "', default)";
                         echo "<br><br> Query: <br>" . $query;
                         $sql2 = mysqli_query($conexao, $query);
 
                         if ($sql2) { // se os dados foram inseridos
                             echo "<br><br>Cheguei aqui";
-                            $sql3 = mysqli_query($conexao, "SELECT * FROM usuario WHERE email = '" . $email . "'");
+                            $sql3 = mysqli_query($conexao, "SELECT * FROM usuario WHERE email = '" . $email_telemovel . "'");
 
                             if (mysqli_num_rows($sql3) > 0) {
                                 $row = mysqli_fetch_assoc($sql3);
@@ -101,7 +101,7 @@ if (!empty($nome) && !empty($apelido) && !empty($email) && !empty($senha)) {
             }
         }
     } else {
-        echo "$email - este nao e um email valido";
+        echo "$email_telemovel - este nao e um email valido";
     }
 } else {
     echo "Todos os campos são necessarios";

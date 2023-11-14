@@ -84,7 +84,18 @@ if (mysqli_num_rows($sql) > 0) { // se ja existe uma conversa entre eles pega o 
         echo "Erro" .mysqli_error($conexao);
     }
     
-    
+   /*
+    $query3 = "INSERT INTO participante (id_participantes, id_conversa, id_usuario, data__criacao, tipo) VALUES (default, '". $id_conversa ."', '". $id_usuario ."', current_timestamp(), default);";
+    $query3 .= "INSERT INTO participante (id_participantes, id_conversa, id_usuario, data__criacao, tipo) VALUES (default, '". $id_conversa ."', '". $id_receptor ."', current_timestamp(), default)";
+    $sql3 = mysqli_multi_query($conexao, $query3);
+    if ($sql3) {
+        echo "<br>Participantes inseridos com sucesso<br>";
+    }
+    else{
+        echo "Erro" .mysqli_error($conexao);
+    }
+    */
+   
     
     
 }
@@ -105,9 +116,9 @@ $query4 = "INSERT INTO mensagem (id_mensagem, id_conversa, id_remetente, mensage
 $sql4 = mysqli_query($conexao, $query4);
 if ($sql4) {
     echo "mensagem enviada com sucesso";
-    //header("Location: ../index.php?amigo=".$id_receptor.");
+    header("Location: ../chat.php?amigo=".$id_receptor."#campoMensagem");
 }
 else{
-    echo "Erro no envio" .mysqli_error($conexao);
+    echo "Erro no envio";
 }
 

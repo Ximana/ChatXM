@@ -26,7 +26,7 @@ if (mysqli_num_rows($sql) > 0) {
             $estado = "offline";
         if ($_SESSION['id_usuario'] != $row['id_usuario']) {
             $saida .= '<li class="clearfix">
-                         <a href="index.php?amigo=' . $row['id_usuario'] . '" class="text-dark listaPessoa ">
+                         <a href="chat.php?amigo=' . $row['id_usuario'] . '" class="text-dark listaPessoa ">
                             <img src="include/imagensUsuario/' . $row['imagem'] . '" alt="avatar">
                             <div class="about">
                                 <div class="name">' . $row['nome'] . ' ' . $row['apelido'] . '</div>
