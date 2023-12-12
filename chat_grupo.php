@@ -58,7 +58,7 @@ if (isset($_GET['amigo'])) {
 
                             <ul class="usuarios-lista list-unstyled chat-lista mt-2 mb-0 " >
 
-                                <?php include_once './usuariosLogados.php'; ?>
+                                <?php include_once './gruposParaMensagens.php'; ?>
                             </ul>
                         </div>
                         <!-- FIM Lista de Pessoas Disponiveis -->

@@ -8,6 +8,7 @@
     font-family: roboto;
 }
 body{
+    margin-top:10px;
     background-color: #e2e8f0;
     font-size: 16px;
     font-weight: 400;
@@ -115,5 +116,9 @@ input {
 form input[type="submit"]{
     margin-top: 15px;
     background-color: #068a48;
+    color: white;
+}
+
+#navbarNav ul li a i{
     color: white;
 }

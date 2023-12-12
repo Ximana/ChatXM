@@ -40,7 +40,7 @@ include_once 'include/dados_do_usuario.php';
                     
                     
                     
-                    <form method="post" action="include/cadastroUsuario.php" enctype="multipart/form-data">
+                    <form method="post" action="include/alterar_usuario.php" enctype="multipart/form-data">
                         <h1 class="">Criar conta</h1>
                         <div class="row row-space">
                             <div class="col-2">
@@ -102,15 +102,10 @@ include_once 'include/dados_do_usuario.php';
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Senha</label>
-                                    <input class="input-form" type="password" name="senha" >
+                                    <input class="input-form" type="password" name="senha" value="<?php echo $row['senha']; ?>">
                                 </div>
                             </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Imagem</label>
-                                    <input class="input-form" type="file" name="imagem">
-                                </div>
-                            </div>
+                            
                         </div>
                         
                         

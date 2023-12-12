@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/opt/lampp/htdocs/chat/loginForm.php</file>
-            <file>file:/opt/lampp/htdocs/chat/include/pesquisarUsuario.php</file>
-            <file>file:/opt/lampp/htdocs/chat/alterar_usuario.php</file>
-            <file>file:/opt/lampp/htdocs/chat/criarContaForm.php</file>
-            <file>file:/opt/lampp/htdocs/chat/perfil.php</file>
-            <file>file:/opt/lampp/htdocs/chat/include/dados_do_usuario.php</file>
-            <file>file:/opt/lampp/htdocs/chat/chat.php</file>
-            <file>file:/opt/lampp/htdocs/chat/include/cadastroUsuario.php</file>
-            <file>file:/opt/lampp/htdocs/chat/include/login.php</file>
+            <file>file:/opt/lampp/htdocs/chat/gruposParaMensagens.php</file>
+            <file>file:/opt/lampp/htdocs/chat/chat_grupo.php</file>
+            <file>file:/opt/lampp/htdocs/chat/mensagensEmGrupo.php</file>
             <file>file:/opt/lampp/htdocs/chat/menu_principal.php</file>
-            <file>file:/opt/lampp/htdocs/chat/css/estilo.css</file>
         </group>
     </open-files>
 </project-private>

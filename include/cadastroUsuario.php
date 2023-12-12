@@ -31,7 +31,8 @@ if (!empty($nome) && !empty($apelido) && !empty($email_telemovel) && !empty($sen
         $sql = mysqli_query($conexao, "SELECT email FROM usuario WHERE email = '{$email_telemovel}'");
 
         if (mysqli_num_rows($sql) > 0) { // se o email ja existe
-            echo "$email_telemovel - este email ja existe na bd";
+            $mensagem_erro = "O email inserido ja existe na bd";
+            header("Location: ../criarContaForm.php?mensagem_erro=" . $mensagem_erro);
         } else {
 
             echo "O email nao existe na bd, pronto para inserir";
@@ -39,10 +40,8 @@ if (!empty($nome) && !empty($apelido) && !empty($email_telemovel) && !empty($sen
             // verificar se o usuario fez o upload da imagem
             if (isset($_FILES['imagem'])) { // Se a imagem foi carregada
                 $img_nome = $_FILES['imagem']['name'];
-                //$img_tipo = $_FILES['imagem']['type'];
                 $tmp_nome = $_FILES['imagem']['tmp_name'];
 
-                // echo "<br>Nome da imagem";
                 //Pegar a extensao da imagem
                 $img_explode = explode('.', $img_nome);
                 $img_ext = end($img_explode);  // pega a extensao da imagem
@@ -51,58 +50,50 @@ if (!empty($nome) && !empty($apelido) && !empty($email_telemovel) && !empty($sen
 
                 if (in_array($img_ext, $extensions) == true) {// se a extensao inserida estiver correta
                     $time = time(); //retorna a hora e data atual
-                    // precisamos do tempo para atribuir nomes unicos as imagens.
+                    //
                     //Inserir a imagem carregada na pasta de usuarios
                     $new_img_name = $time . $img_nome;
                     if (move_uploaded_file($tmp_nome, "imagensUsuario/" . $new_img_name)) {
-                       // $status = "Ativo";
-                        $random_id = rand(time(), 10000000); // id aleatorio para o usuario
+
                         //Inserir os dados do usuario na BD
                         $query = "INSERT INTO usuario
-                            (id_usuario, id_unico, nome, apelido, data_nascimento, genero, email, senha, estado, imagem, data_registro, numero_telefone, Ultima_atividade)
-                            VALUES (default, " . $random_id . ", '" . $nome . "', '" . $apelido . "', '" . $nascimento . "', '" . $genero . "', '" . $email_telemovel . "', '" . $senha . "',  default , '" . $new_img_name . "', default, '" . $telefone . "', default)";
-                        echo "<br><br> Query: <br>" . $query;
+                            (id_usuario, nome, apelido, data_nascimento, genero, email, senha, estado, imagem, data_registro, numero_telefone, Ultima_atividade)
+                            VALUES (default, '" . $nome . "', '" . $apelido . "', '" . $nascimento . "', '" . $genero . "', '" . $email_telemovel . "', '" . $senha . "',  default , '" . $new_img_name . "', default, '" . $telefone . "', default)";
+
                         $sql2 = mysqli_query($conexao, $query);
 
                         if ($sql2) { // se os dados foram inseridos
-                            echo "<br><br>Cheguei aqui";
                             $sql3 = mysqli_query($conexao, "SELECT * FROM usuario WHERE email = '" . $email_telemovel . "'");
 
                             if (mysqli_num_rows($sql3) > 0) {
                                 $row = mysqli_fetch_assoc($sql3);
 
-                               // $_SESSION['id_unico'] = $row['id_unico']; // para usar o id unico do utilizador em outros arquivos php
-                                // $_SESSION['nomeUsuario'] = $row['unique_Id']
-                                // $_SESSION['idUsuario'] = $row['unique_Id']
-                                // $_SESSION['apelido'] = $row['unique_Id']
-                                // $_SESSION['status'] = $row['unique_Id']
-
-                                echo "Suesso";
-
-                                // Codigo para chamar login ou o index vai aqui abaixo
-                                //
-                                //
-                                //
-                                //
                                 header("Location: ../loginForm.php");
                             }
                         } else {
-                            echo "Algo correu mal";
-                           // header("Location: ../criarContaForm.php");
+
+                            $mensagem_erro = "Algo correu mal";
+                            header("Location: ../criarContaForm.php?mensagem_erro=" . $mensagem_erro);
                         }
                     }
                 } else {
-                    echo "Selecione uma imagem com extensao valida - png, jpg, jpeg";
-                    //header("Location: ../criarContaForm.php");
+
+                    $mensagem_erro = "Selecione uma imagem com extensao valida - png, jpg, jpeg";
+                    header("Location: ../criarContaForm.php?mensagem_erro=" . $mensagem_erro);
                 }
             } else {
-                echo "Por favor seleione uma imagem";
-               // header("Location: ../criarContaForm.php");
+
+                $mensagem_erro = "Por favor seleione uma imagem";
+                header("Location: ../criarContaForm.php?mensagem_erro=" . $mensagem_erro);
             }
         }
     } else {
-        echo "$email_telemovel - este nao e um email valido";
+
+        $mensagem_erro = "este nao e um email valido";
+        header("Location: ../criarContaForm.php?mensagem_erro=" . $mensagem_erro);
     }
 } else {
-    echo "Todos os campos são necessarios";
+
+    $mensagem_erro = "Todos os campos são necessarios";
+    header("Location: ../criarContaForm.php?mensagem_erro=" . $mensagem_erro);
 }

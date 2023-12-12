@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="css/fontawesome.min.css"/>
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
         <link href="css/estilo.css" rel="stylesheet" media="all">
-        <link rel="stylesheet" href="css/login.css"
+        <link rel="stylesheet" href="css/login.css">
     </head>
     <body>
         <div class="login">

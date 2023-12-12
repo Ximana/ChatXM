@@ -11,10 +11,63 @@ include_once 'include/dados_do_usuario.php';
         <title>Perfil</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet" />
+
         <link href="css/perfil.css" rel="stylesheet">
         <link href="css/estilo.css" rel="stylesheet">
 
     </head>
+    <style media="screen">
+        .upload{
+            width: 140px;
+            position: relative;
+            margin: auto;
+            text-align: center;
+        }
+        .upload img{
+            border-radius: 50%;
+            border: 8px solid #DCDCDC;
+            width: 163px;
+            height: 163px;
+        }
+        .upload .rightRound{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #00B4FF;
+            width: 32px;
+            height: 32px;
+            line-height: 33px;
+            text-align: center;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .upload .leftRound{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: red;
+            width: 32px;
+            height: 32px;
+            line-height: 33px;
+            text-align: center;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .upload .fa{
+            color: white;
+        }
+        .upload input{
+            position: absolute;
+            transform: scale(2);
+            opacity: 0;
+        }
+        .upload input::-webkit-file-upload-button, .upload input[type=submit]{
+            cursor: pointer;
+        }
+    </style>
     <body>
         <div class="container">
 
@@ -38,20 +91,42 @@ include_once 'include/dados_do_usuario.php';
 
             <div class="main-body">
 
-                <nav aria-label="breadcrumb" class="main-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Usuario</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Perfil</li>
-                    </ol>
-                </nav>
+
 
                 <div class="row gutters-sm">
                     <div class="col-md-4 mb-3">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="include/imagensUsuario/<?php echo $row['imagem']; ?>" alt="Admin" class="rounded-circle" width="150">
+
+                                    <!-- Imagem do Perfil -->
+                                    <form class="form" id = "form" action="include/alterarImagemPerfil.php" enctype="multipart/form-data" method="post">
+                                        <input type="hidden" name="id_usuario" value="<?php echo $user['id']; ?>">
+                                        <div class="upload">
+                                            <img src="include/imagensUsuario/<?php echo $row['imagem']; ?>" alt="Admin" class="rounded-circle" width="150" id = "image">
+
+
+
+                                            <!-- Se nao foi setada  id de u7m amigo entao pode se alterar a imagem -->
+                                            <?php if (!(isset($_GET['amigo']))): ?>
+                                                <div class="rightRound" id = "upload">
+                                                    <input type="file" name="fileImg" id = "fileImg" accept=".jpg, .jpeg, .png">
+                                                    <i class = "fa fa-camera"></i>
+                                                </div>
+
+                                                <div class="leftRound" id = "cancel" style = "display: none;">
+                                                    <i class = "fa fa-times"></i>
+                                                </div>
+                                                <div class="rightRound" id = "confirm" style = "display: none;">
+                                                    <input type="submit">
+                                                    <i class = "fa fa-check"></i>
+                                                </div>
+                                            <?php endif ?>
+                                            
+                                        </div>
+                                    </form>
+                                    <!-- Fim Imagem do Perfil -->
+
                                     <div class="mt-3">
                                         <h4> <?php echo "" . $row['nome'] . " " . $row['apelido']; ?></h4>
                                         <p class="text-secondary mb-1">Desemvolvedor Full Stack</p>
@@ -98,7 +173,7 @@ include_once 'include/dados_do_usuario.php';
                                         <h6 class="mb-0">Nome Completo</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                       <?php echo "" . $row['nome'] . " " . $row['apelido']; ?>
+                                        <?php echo "" . $row['nome'] . " " . $row['apelido']; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -135,10 +210,10 @@ include_once 'include/dados_do_usuario.php';
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0">Endereço</h6>
+                                        <h6 class="mb-0">Genero</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        Luanda, Luanda, Angola
+                                         <?php echo $row['genero']; ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -214,8 +289,26 @@ include_once 'include/dados_do_usuario.php';
         </div>
         <script src="js/jquery-3.2.1.slim.min.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>
-        <script type="text/javascript">
 
+        <script type="text/javascript">
+            document.getElementById("fileImg").onchange = function () {
+                document.getElementById("image").src = URL.createObjectURL(fileImg.files[0]); // Preview new image
+
+                document.getElementById("cancel").style.display = "block";
+                document.getElementById("confirm").style.display = "block";
+
+                document.getElementById("upload").style.display = "none";
+            }
+
+            var userImage = document.getElementById('image').src;
+            document.getElementById("cancel").onclick = function () {
+                document.getElementById("image").src = userImage; // Back to previous image
+
+                document.getElementById("cancel").style.display = "none";
+                document.getElementById("confirm").style.display = "none";
+
+                document.getElementById("upload").style.display = "block";
+            }
         </script>
     </body>
 </html>
